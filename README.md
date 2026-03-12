@@ -1,5 +1,7 @@
 # 💫 About Me
-Hi there 👋<br><br>I’m someone who genuinely enjoys understanding how systems work under the hood. I like thinking about what happens when 10,000 requests hit them at once, how threads are scheduled, where latency matters, and how design decisions age over time.<br><br>Lately, I’ve been spending a lot of time building and refining backend systems — working at a fintech firm has given me exposure to reliable low-latency trading systems, which has piqued my curiosity. Many components work together in tandem beautifully, which has encouraged me to learn how trading systems work and how traffic at scale is handled.
+Hello there, created this to look cool like other developers who keep their profiles updated. GitHub README has become a dev's portfolio, so 
+
+Here is mine.
 
 ## 🌐 Socials:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/https://www.linkedin.com/in/vetrivel-m-458a3a1b7/) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:vetrisurabi@gmail.com) 
