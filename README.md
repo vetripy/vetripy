@@ -7,7 +7,6 @@ event-driven architectures, and distributed systems.
 Outside of work, I build things to go deeper, the kind of projects that force you to actually understand how exchanges, 
 trading systems, and financial infrastructure work under the hood.
 
-![Snake animation](https://raw.githubusercontent.com/vetripy/vetripy/output/github-snake-dark.svg)
 <p align="center">
   <img src="https://streak-stats.demolab.com?user=vetripy&theme=dark&hide_border=true" alt="Github Streak"/>
 </p>
@@ -89,6 +88,8 @@ on bus locations.
 [View →](https://github.com/vetripy/BusTracker)
 
 ---
+
+![Snake animation](https://raw.githubusercontent.com/vetripy/vetripy/output/github-snake-dark.svg)
 
 ## What I'm Exploring Right Now
 
