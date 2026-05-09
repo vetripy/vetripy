@@ -31,8 +31,6 @@ I can't open-source production code, but here's what I actually work on:
   between liquidity venues and our trading platform using QuickFIX
 - **Market Data Endpoints** — Consume upstream feeds, aggregate in real-time, 
   serve clients on a low-latency platform
-- **Matching Engine** — Currently working on microsecond-level benchmarking 
-  and performance profiling
 - **Test Automation Suite** — Cucumber + Jenkins pipeline that cut a full 
   sprint cycle of manual testing to a 10-minute CI run
 
