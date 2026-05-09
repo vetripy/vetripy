@@ -7,11 +7,10 @@ event-driven architectures, and distributed systems.
 Outside of work, I build things to go deeper, the kind of projects that force you to actually understand how exchanges, 
 trading systems, and financial infrastructure work under the hood.
 
-![Vetrivel's GitHub Stats](https://github-readme-stats.vercel.app/api?username=vetripy&show_icons=true&theme=dark&hide_border=true&include_all_commits=true&count_private=true)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=vetripy&layout=compact&theme=dark&hide_border=true&langs_count=6)
-
-![GitHub Streak](https://streak-stats.demolab.com?user=vetripy&theme=dark&hide_border=true)
+![Snake animation](https://raw.githubusercontent.com/vetripy/vetripy/output/github-snake-dark.svg)
+<p align="center">
+  <img src="https://streak-stats.demolab.com?user=vetripy&theme=dark&hide_border=true" alt="Github Streak"/>
+</p>
 
 ---
 
