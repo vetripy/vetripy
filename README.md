@@ -1,29 +1,104 @@
-# 💫 About Me
-Hello there, I'm a Software engineer in the fintech domain, currently focused on growing as a backend engineer, learning from production systems, and continuously improving my technical depth.
+# Vetrivel M
 
-## 🌐 Socials:
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/https://www.linkedin.com/in/vetrivel-m-458a3a1b7/) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:vetrisurabi@gmail.com) 
+Backend engineer at Fidelity Investments, working on the infrastructure 
+that keeps trading platforms running. My day job involves low-latency APIs, 
+event-driven architectures, and distributed systems.
 
-# 💻 Tech Stack:
-![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=flat&logo=c%2B%2B&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=flat&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=flat&logo=css3&logoColor=white) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=flat&logo=openjdk&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=flat&logo=javascript&logoColor=%23F7DF1E) ![Python](https://img.shields.io/badge/python-3670A0?style=flat&logo=python&logoColor=ffdd54) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=flat&logo=amazon-aws&logoColor=white) ![Datadog](https://img.shields.io/badge/datadog-%23632CA6.svg?style=flat&logo=datadog&logoColor=white) ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=flat&logo=heroku&logoColor=white) ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=flat&logo=vercel&logoColor=white) ![Apache Kafka](https://img.shields.io/badge/Apache%20Kafka-000?style=flat&logo=apachekafka) ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=flat&logo=django&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi) ![Insomnia](https://img.shields.io/badge/Insomnia-black?style=flat&logo=insomnia&logoColor=5849BE) ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=flat&logo=spring&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=flat&logo=mongodb&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=flat&logo=mysql&logoColor=white) ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=flat&logo=postgresql&logoColor=white) ![Playwright](https://img.shields.io/badge/-playwright-%232EAD33?style=flat&logo=playwright&logoColor=white)
-
-### My Learnings so far:
-- Java & Spring Boot
-- Concurrency and multi-threading
-- Designing clean interfaces and modular systems
-- MongoDB and FastAPI
-- Cucumber Automation
-
-### What I’m actively exploring:
-- Algorithmic trading infrastructure
-- Low-latency design
-- FIX protocol
-- Distributed systems
-- Event-driven systems 
-- Messaging bus - Kafka (TCP-based) and Aeron (UDP-based)
-
-👯 I’m looking to collaborate on backend-heavy projects, trading systems, or anything that involves interesting challenges.
-
-🤔 I’m looking for help with advancing into serious system design discussions and real-world infrastructure patterns.
+Outside of work, I build things to go deeper, the kind of projects that force you to actually understand how exchanges, 
+trading systems, and financial infrastructure work under the hood.
 
 ---
+
+## What I Work With
+
+**Core:** Java, Spring Boot, REST APIs, Microservices  
+**Messaging:** Apache Kafka, Aeron  
+**Infrastructure:** Docker, Kubernetes, AWS (Lambda, SQS, Step Functions)  
+**Protocols:** QuickFIX/J (FIX Protocol), SBE (Simple Binary Encoding)    
+**Databases:** PostgreSQL, MongoDB    
+**Observability:** Datadog, Grafana   
+**CI/CD and Other tools**: Jenkins, Sonar
+
+---
+
+## What I've Built at Fidelity
+
+I can't open-source production code, but here's what I actually work on:
+
+- **Order Entry API** — REST endpoints for a live trading platform, 
+  sub-100ms latency, horizontally scaled for high availability
+- **Market Access Gateway** — Built from scratch to handle communication 
+  between liquidity venues and our trading platform using QuickFIX
+- **Market Data Endpoints** — Consume upstream feeds, aggregate in real-time, 
+  serve clients on a low-latency platform
+- **Matching Engine** — Currently working on microsecond-level benchmarking 
+  and performance profiling
+- **Test Automation Suite** — Cucumber + Jenkins pipeline that cut a full 
+  sprint cycle of manual testing to a 10-minute CI run
+
+---
+
+## Featured Project — Mini Exchange Engine
+
+> A deterministic, in-memory matching engine built in pure Java.  
+> A real attempt to understand how exchanges 
+> actually process orders.
+
+**What it does:**
+- Matches orders using price-time priority (the same model real exchanges use)
+- Supports Limit, Market, IOC, and Fill-or-Kill order types
+- Event-sourced design — every state change is a TradeEvent or OrderUpdateEvent
+- Command-based input — NewOrderCommand, CancelOrderCommand
+- Runs in both SYNC and ASYNC modes
+
+**Why the architecture decisions matter:**
+
+The engine uses a single-threaded deterministic loop — the same design 
+philosophy behind LMAX Disruptor and most high-performance exchange cores. 
+Concurrency bugs in matching engines cause incorrect fills and financial loss. 
+Single-threaded + sequenced = provably correct.
+
+Key structures:
+- `TreeMap` for buy/sell books — price-sorted, O(log n) insertion
+- `HashMap` for order index — O(1) lookups by order ID
+- `LinkedHashSet` at each price level — FIFO queue for time priority
+- `MatchContext` — atomically collects all events produced by a single command
+
+**What I'm working on next:**
+- Microsecond benchmarking with JMH
+- Ring buffers instead of BlockingQueues
+
+[View the project →](https://github.com/yourusername/mini-exchange-engine)
+
+---
+
+## Other Projects
+
+**FastAPI Event Management API**  
+REST API for a real-world event management system — CRUD operations, 
+built with FastAPI and Python. Backend complete, UI in progress.  
+[View →](https://github.com/vetripy/starvoirs-api)
+
+**College Bus Tracker**  
+Real-time bus tracking for college routes using Django and Google Maps API.  
+Built during college, but the problem was real — students had no visibility 
+on bus locations.  
+[View →](https://github.com/vetripy/BusTracker)
+
+---
+
+## What I'm Exploring Right Now
+
+- Microsecond-level latency profiling in Java (JMH, async-profiler)
+- LMAX Ring Buffers
+- Order matching algorithms and exchange microstructure
+
+---
+
+## Let's Talk
+
+If you're building something in trading infrastructure, exchange systems, 
+or serious backend work — I'm always open to a conversation.
+
+[LinkedIn](https://www.linkedin.com/in/vetrivel-m-458a3a1b7/) · 
+[Email](mailto:vetrisurabi@gmail.com)
