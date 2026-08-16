@@ -23,8 +23,6 @@ trading systems, and financial infrastructure work under the hood.
 
 ## What I've Built at Fidelity
 
-I can't open-source production code, but here's what I actually work on:
-
 - **Order Entry API** — REST endpoints for a live trading platform, 
   sub-100ms latency, horizontally scaled for high availability
 - **Market Access Gateway** — Built from scratch to handle communication 
