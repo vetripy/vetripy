@@ -64,7 +64,7 @@ Key structures:
 - Microsecond benchmarking with JMH
 - Ring buffers instead of BlockingQueues
 
-[View the project →](https://github.com/yourusername/mini-exchange-engine)
+[View the project →](https://github.com/vetripy/mini-exchange-engine)
 
 ---
 
