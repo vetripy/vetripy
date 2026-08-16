@@ -7,10 +7,6 @@ event-driven architectures, and distributed systems.
 Outside of work, I build things to go deeper, the kind of projects that force you to actually understand how exchanges, 
 trading systems, and financial infrastructure work under the hood.
 
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=vetripy&theme=dark&hide_border=true" alt="Github Streak"/>
-</p>
-
 ---
 
 ## What I Work With
