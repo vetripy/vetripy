@@ -43,26 +43,31 @@ trading systems, and financial infrastructure work under the hood.
 **What it does:**
 - Matches orders using price-time priority (the same model real exchanges use)
 - Supports Limit, Market, IOC, and Fill-or-Kill order types
-- Event-sourced design — every state change is a TradeEvent or OrderUpdateEvent
-- Command-based input — NewOrderCommand, CancelOrderCommand
-- Runs in both SYNC and ASYNC modes
+- Self-trade prevention with a configurable policy (cancel-newest, cancel-oldest, cancel-both)
+- Event-sourced design — every state change is a TradeEvent, OrderUpdateEvent, or CommandRejectedEvent
+- Command-based input — NewOrderCommand, CancelOrderCommand — purely numeric on the hot path, 
+  no String identity anywhere in the match loop
+- Runs in both SYNC and ASYNC modes, ASYNC backed by an LMAX Disruptor ring buffer
 
 **Why the architecture decisions matter:**
 
-The engine uses a single-threaded deterministic loop — the same design 
-philosophy behind LMAX Disruptor and most high-performance exchange cores. 
-Concurrency bugs in matching engines cause incorrect fills and financial loss. 
-Single-threaded + sequenced = provably correct.
+The engine uses a single-threaded deterministic loop — the same design philosophy behind LMAX 
+Disruptor and most high-performance exchange cores. Concurrency bugs in matching engines cause 
+incorrect fills and financial loss. Single-threaded + sequenced = provably correct.
 
 Key structures:
-- `TreeMap` for buy/sell books — price-sorted, O(log n) insertion
-- `HashMap` for order index — O(1) lookups by order ID
-- `LinkedHashSet` at each price level — FIFO queue for time priority
+- `TreeMap` for buy/sell price levels — price-sorted, O(log n) insertion
+- `Long2ObjectHashMap` (Agrona) for the order index — O(1) lookup by order ID, no boxing
+- An intrusive doubly-linked list per price level — `prev`/`next` pointers live on `Order` 
+  itself, so cancelling an order anywhere in the queue is O(1), not a linear scan. Cancels 
+  are typically the majority of order flow on a real venue, so this was the highest-leverage 
+  data structure fix in the codebase.
 - `MatchContext` — atomically collects all events produced by a single command
 
 **What I'm working on next:**
-- Microsecond benchmarking with JMH
-- Ring buffers instead of BlockingQueues
+- A journal + snapshot layer for deterministic replay and crash recovery
+- Microsecond benchmarking with JMH and async-profiler
+- Symbol sharding across multiple engine instances
 
 [View the project →](https://github.com/vetripy/mini-exchange-engine)
 
@@ -88,7 +93,7 @@ on bus locations.
 ## What I'm Exploring Right Now
 
 - Microsecond-level latency profiling in Java (JMH, async-profiler)
-- LMAX Ring Buffers
+- Deterministic replay & journaling for exchange systems
 - Order matching algorithms and exchange microstructure
 
 ---
